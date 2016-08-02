@@ -28,8 +28,8 @@ let "organization.name" = "European Bioinformatics Institute";
 let "organization.abbreviation" = "EBI";
 let "organization.homePage" = "http://www.ebi.ac.uk/";
 
-/* Treatment */
-transform column "$.'experiment'.'experimentdesign'.'_$'" to "treatment.name";
+/* Activity */
+transform column "$.'experiment'.'experimentdesign'.'_$'" to "activity.name";
 
 /* Data Acquisition Information */
 transform column "$.'experiment'.'arraydesign'.'accession'.'_$'" to "dataAcquisition.ID";
