@@ -30,9 +30,9 @@ arr=re.split("\s*,\s*",value,)
 result=arr
 }};
 
-/* Treatment */
-transform column "$.'pr_nif_0000_37639_1'.'preparation'" to "treatment.name";
-transform column "$.'pr_nif_0000_37639_1'.'visualizationmethods'" to "treatment.agent";
+/* Activity */
+transform column "$.'pr_nif_0000_37639_1'.'preparation'" to "activity.name";
+transform column "$.'pr_nif_0000_37639_1'.'visualizationmethods'" to "activity.keywords";
 
 /* Data Acquisition Information */
 transform column "$.'pr_nif_0000_37639_1'.'imagingmode'" to "dataAcquisition.name";
