@@ -49,8 +49,8 @@ result=arr
 /* Study Group Information */ 
 transform column "$.'pr_nif_0000_00006_1'.'expercond'" to "studyGroup.name";
 
-/* Treatment information */
-transform column "$.'pr_nif_0000_00006_1'.'stain'" to "treatment.name";
+/* Activity information */
+transform column "$.'pr_nif_0000_00006_1'.'stain'" to "activity.name";
 
 /* Items not included */
 /*
