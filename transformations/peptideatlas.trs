@@ -32,11 +32,12 @@ transform column "$.'pr_nif_0000_03266_2'.'name'" to "taxonomicinformation[0].na
 /* Instrument Information */
 transform column "$.'pr_nif_0000_03266_2'.'instrument'" to "instrument.name";
 
-/*
-transform columns "$.'pr_nif_0000_03266_2'.'treatment'" , "$.'pr_nif_0000_03266_2'.'growth'" , "$.'pr_nif_0000_03266_2'.'digestion'" , "$.'pr_nif_0000_03266_2'.'extract'" , "$.'pr_nif_0000_03266_2'.'separation'" to "treatment.description" apply 
+/* Activity Information */
+transform columns "$.'pr_nif_0000_03266_2'.'treatment'" , "$.'pr_nif_0000_03266_2'.'growth'" , "$.'pr_nif_0000_03266_2'.'digestion'" , "$.'pr_nif_0000_03266_2'.'extract'" , "$.'pr_nif_0000_03266_2'.'separation'" to "activity.description" apply 
 {{ 
 result = 'Treatment: ' + value1 + '; Growth: ' + value2 + '; Digestion: ' + value3 + '; Extraction: ' + value4 + '; Separation: ' + value5 
 }};
+/* Items not included 
 transform column "$.'pr_nif_0000_03266_2'.'e_uid'" to "e_uid";
 transform column "$.'pr_nif_0000_03266_2'.'v_uid'" to "v_uid";
 transform column "$.'pr_nif_0000_03266_2'.'v_uuid'" to "v_uuid";
