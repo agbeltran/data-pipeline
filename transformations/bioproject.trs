@@ -1,6 +1,7 @@
 /* Dataset Information */
 transform column "$.'Package'.'Project'.'Project'.'ProjectID'.'ArchiveID'.'@accession'" to "dataset.ID";
 transform columns "$.'Package'.'Project'.'Project'.'ProjectDescr'.'Name'.'_$'", "$.'Package'.'Project'.'Project'.'ProjectDescr'.'Title'.'_$'"  to "dataset.title" apply {{ result = value1 + ' : ' + value2; }};
+let "dataset.creators" = "";
 transform column "$.'Package'.'Project'.'Project'.'ProjectType'.'ProjectTypeSubmission'.'ProjectDataTypeSet'.'DataType'.'_$'" to "dataset.types[0]";
 transform column "$.'Package'.'Project'.'Project'.'ProjectDescr'.'Description'.'_$'" to "dataset.description" apply {{ result = re.compile(r'<.*?>').sub('',value) }};
 
