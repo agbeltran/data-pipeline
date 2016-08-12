@@ -6,7 +6,7 @@ transform column "$.'Package'.'Project'.'Project'.'ProjectType'.'ProjectTypeSubm
 transform column "$.'Package'.'Project'.'Project'.'ProjectDescr'.'Description'.'_$'" to "dataset.description" apply {{ result = re.compile(r'<.*?>').sub('',value) }};
 
 /* Dataset Distribution Information */
-transform column "$.'Package'.'Project'.'Project'.'ProjectDescr'.'ProjectReleaseDate'.'_$'" to "datasetDistribution.dateReleased";
+transform column "$.'Package'.'Project'.'Project'.'ProjectDescr'.'ProjectReleaseDate'.'_$'" to "datasetDistribution.dateReleased" apply toStandardDateTime("yyyy/MM/dd");
 
 /* Data Repository Information */
 let "dataRepository.ID" = "SCR:004801";
