@@ -7,9 +7,9 @@ transform column "$.'experiment'.'description'.'text'.'_$'" to "dataset.descript
 let "dataset.keywords[0]" = "functional genomics";
 
 /* Dataset distribution */
-transform column "$.'experiment'.'releasedate'.'_$'" to "datasetdistribution.dateReleased";
-transform column "$.'experiment'.'submissiondate'.'_$'" to "datasetdistribution.dateSubmitted";
-transform column "$.'experiment'.'lastupdatedate'.'_$'" to "datasetdistribution.dateModified";
+transform column "$.'experiment'.'releasedate'.'_$'" to "datasetdistribution.dateReleased" apply toStandardDateTime("yyyy/MM/dd");
+transform column "$.'experiment'.'submissiondate'.'_$'" to "datasetdistribution.dateSubmitted" apply toStandardDateTime("yyyy/MM/dd");
+transform column "$.'experiment'.'lastupdatedate'.'_$'" to "datasetdistribution.dateModified" apply toStandardDateTime("yyyy/MM/dd");
 
 /* Data Repository Information */
 let "dataRepository.ID" = "SCR:002964";
