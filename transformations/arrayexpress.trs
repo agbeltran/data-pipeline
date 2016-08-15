@@ -40,4 +40,4 @@ transform column "$.'experiment'.'arraydesign'.'name'.'_$'" to "dataAcquisition.
 transform column "$.'experiment'.'species'.'_$'" to "taxonomicinformation[0].name";
 
 /* Items not included */
-let "citation.count"  = "0";
+
