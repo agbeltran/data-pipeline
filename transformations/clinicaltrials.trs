@@ -1,7 +1,7 @@
 /* Dataset Information */
 transform column "$.'clinical_study'.'id_info'.'nct_id'.'_$'" to "dataset.ID";
 transform column "$.'clinical_study'.'official_title'.'_$'" to "dataset.title";
-transform column "$.'clinical_study'.'source'.'_$'" to "dataset.creator";
+transform column "$.'clinical_study'.'source'.'_$'" to "dataset.creators";
 transform column "$.'clinical_study'.'brief_summary'.'textblock'.'_$'" to "dataset.description";
 transform column "$.'clinical_study'.'keyword'[*].'_$'" to "dataset.keywords[]";
 
