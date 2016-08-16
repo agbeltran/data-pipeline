@@ -5,6 +5,9 @@ transform column "$.'pr_nif_0000_37639_1'.'imagedescription'" to "dataset.descri
 transform column "$.'pr_nif_0000_37639_1'.'parameterimaged'" to "dataset.dimensions";
 transform column "$.'pr_nif_0000_37639_1'.'itemtype'" to "dataset.types";
 
+/* Dateset Distribution */
+let "datasetDistribution.dateReleased" = ""
+
 /* Data Repository Information */
 let "dataRepository.ID" = "SCR:003510";
 let "dataRepository.name" = "Cell Image Library";
