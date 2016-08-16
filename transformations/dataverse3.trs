@@ -1,15 +1,16 @@
 /* Dataset Information */
 transform column "$.'citation'.'fields'[*].'otherId'[*].'otherIdValue'" to "dataset.alternateIdentifiers[]";
 transform column "$.'citation'.'fields'[*].'title'" to "dataset[].title";
+let "dataset.creators" = "";
 transform column "$.'citation'.'fields'[*].'kindOfData'[*]" to "dataset[].types";
 transform column "$.'citation'.'fields'[*].'dsDescription'[*].'dsDescriptionValue'" to "dataset[].description";
 transform column "$.'citation'.'fields'[*].'keyword'[*].'keywordValue'" to "dataset[].keywords[]"; 
 
 /* Dataset Distribution */
 transform column "$.'citation'.'fields'[*].'distributor'[*].'distributorName'" to "datasetDistribution.distributor[]"; 
-transform column "$.'citation'.'fields'[*].'dateOfDeposit'" to "datasetDistribution.dateDeposited[]";
-transform column "$.'citation'.'fields'[*].'productionDate'" to "datasetDistribution.dateCreated[]";
-transform column "$.'citation'.'fields'[*].'distributionDate'" to "datasetDistribution.dateReleased[]"; 
+transform column "$.'citation'.'fields'[*].'dateOfDeposit'" to "datasetDistribution.dateDeposited[]"apply toStandardDateTime("yyyy-MM-dd'T'HH:mm:ssZ");
+transform column "$.'citation'.'fields'[*].'productionDate'" to "datasetDistribution.dateCreated[]"apply toStandardDateTime("yyyy-MM-dd'T'HH:mm:ssZ");
+transform column "$.'citation'.'fields'[*].'distributionDate'" to "datasetDistribution.dateReleased[]"apply toStandardDateTime("yyyy-MM-dd'T'HH:mm:ssZ"); 
 
 /* Access */
 let "access.accesstypes"  = "download"; 
