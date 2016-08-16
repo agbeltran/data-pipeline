@@ -1,7 +1,7 @@
 /* Dataset Information */
 transform column "$.'pr_nif_0000_21981_1'.'studynum'" to "dataset.ID";
 transform column "$.'pr_nif_0000_21981_1'.'study_title'" to "dataset.title";
-transform column "$.'pr_nif_0000_21981_1'.'investigator'" to "dataset.creator";
+transform column "$.'pr_nif_0000_21981_1'.'investigator'" to "dataset.creators";
 transform column "$.'pr_nif_0000_21981_1'.'study_description'" to "dataset.description";
 transform column "$.'pr_nif_0000_21981_1'.'keywords'" to "dataset.keywords[]" apply {{
 arr=re.split("\s*,\s*",value,)
@@ -9,7 +9,7 @@ result=arr
 }};
 
 /* Dataset Distribution */
-transform column "$.'pr_nif_0000_21981_1'.'release_date'" to "datasetdistribution.dateReleased";
+transform column "$.'pr_nif_0000_21981_1'.'release_date'" to "datasetDistribution.dateReleased" apply toStandardDateTime("yyyy/MM/dd");
 
 /* Access Information */
 transform column "$.'pr_nif_0000_21981_1'.'studynum'" to "access.landingPage" apply {{ result = 'http://ctndisseminationlibrary.org/protocols/' + value }};
