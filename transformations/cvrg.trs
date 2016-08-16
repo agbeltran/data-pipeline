@@ -1,6 +1,7 @@
 /* Dataset Information */
 transform column "$.'record'.'metadata'.'oai_dc_eddi:dc'.'dc:identifier'.'_$'" to "dataset.ID";
 transform column "$.'record'.'metadata'.'oai_dc_eddi:dc'.'dc:title'.'_$'" to "dataset.title";
+let "dataset.creators" = "";
 transform column "$.'record'.'metadata'.'oai_dc_eddi:dc'.'dc:eddi_description'.'_$'" to "dataset.description";
 
 /* Data Repository Information */
