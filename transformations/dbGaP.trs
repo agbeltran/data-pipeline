@@ -1,12 +1,13 @@
 /* Dataset Information */
 transform column "$.'Study'.'@parentStudy'" to "dataset.ID";
 transform column "$.'Study'.'Configuration'.'StudyNameEntrez'.'_$'" to "dataset.title";
+let "dataset.description" = "";
 transform column "$.'Study'.'Configuration'.'Description'.'_$'" to "dataset.description";
 
 /* Dataset Distribution */
-transform column "$.'Study'.'@createDate'" to "datadistribution.dateCreated";
-transform column "$.'Study'.'@modDate'" to "datadistribution.dateModified"; 
-transform column "$.'Study'.'@accession'" to "datadistribution.version";
+transform column "$.'Study'.'@createDate'" to "datasetdistribution.dateReleased"apply toStandardDate("MMM dd yyyy");
+transform column "$.'Study'.'@modDate'" to "datasetdistribution.dateModified"apply toStandardDate("MMM dd yyyy"); 
+transform column "$.'Study'.'@accession'" to "datasetdistribution.version"apply toStandardDate("MMM dd yyyy");
 
 /* Data Repository Information */
 transform column "$.'Study'.'@source'" to "dataRepository.name";
