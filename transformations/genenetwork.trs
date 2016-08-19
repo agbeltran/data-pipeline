@@ -1,6 +1,10 @@
 /* Dataset Information */
 transform column "$.'database'" to "dataset.title";
+let "dataset.creators"  = "";
 transform column "$.'tissue'" to "dataset.description";
+
+/* Dataset Distribution */
+let "datasetDistribution.dateReleased" = "";
 
 /* Publication Inforamtion */
 transform column "$.'records'[*].Index" to "publication.identifier";
