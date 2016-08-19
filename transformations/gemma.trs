@@ -1,8 +1,12 @@
 /* Dataset Information */
 transform column "$.'GemmaDsId'" to "dataset.ID";
 transform column "$.'Name'" to "dataset.title";
+let "dataset.creators"  = "";
 transform column "$.'Description'" to "dataset.description";
 let "dataset.keywords[0]"  = "functional genomics";
+
+/* Dataset Distribution */
+let "datasetDistribution.dateReleased"  = "";
 
 /* Data Repository Information */
 let "dataRepository.ID" = "SCR:008007";
