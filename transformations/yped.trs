@@ -1,6 +1,7 @@
 /* Dataset Information */
 transform column "$.'pr_nlx_152660_1'.'project_name'" to "dataset.id";
 transform column "$.'pr_nlx_152660_1'.'project_name'" to "dataset.title";
+transform column "$.'pr_nlx_152660_1'.'pi'" to "dataset.creators"
 transform column "$.'pr_nlx_152660_1'.'description'" to "dataset.description";
 
 /* Dataset Distribution */
