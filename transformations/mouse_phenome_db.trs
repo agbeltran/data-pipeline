@@ -1,11 +1,13 @@
 /* Dataset Information */
 transform column "$.'pr_nif_0000_03160_1'.'dataset_id'" to "dataset.ID";
 transform column "$.'pr_nif_0000_03160_1'.'title'" to "dataset.title";
+let "dataset.creators" = ""
 transform column "$.'pr_nif_0000_03160_1'.'datasettype'" to "dataset.dataType";
 transform column "$.'pr_nif_0000_03160_1'.'description'" to "dataset.description";
 
 /* Dataset Distribution */
 transform column "$.'pr_nif_0000_03160_1'.'nstrains'" to "dataset.size";
+let "datasetDistribution.dateReleased" = "" ;
 
 /* Data Repository Information */
 let "dataRepository.name" = "Mouse Phenome Database";
