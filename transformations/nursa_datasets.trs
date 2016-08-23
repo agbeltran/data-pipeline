@@ -7,6 +7,8 @@ transform column "$.nif_0000_03208_2.'tissue_cell_lines'" to "dataset.keywords[]
 arr=re.split("\s*,\s*",value,)
 result=arr
 }};
+/* Dataset Distribution */
+let "datasetDistribution.dateReleased" = ""
 
 /* Data Repository Information */
 let "dataRepository.name"  = "Nuclear Receptor Signaling Atlas";
