@@ -1,6 +1,7 @@
 /* Dataset Information */
 transform column "$.'nif_0000_03208_2'.'doi'" to "dataset.ID";
 transform column "$.'nif_0000_03208_2'.'name'" to "dataset.title";
+let "dataset.creators" = "";
 transform column "$.nif_0000_03208_2.'description'" to "dataset.description";
 transform column "$.nif_0000_03208_2.'tissue_cell_lines'" to "dataset.keywords[]" apply {{
 arr=re.split("\s*,\s*",value,)
