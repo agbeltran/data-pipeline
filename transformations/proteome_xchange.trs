@@ -1,13 +1,14 @@
 /* Dataset Information */
 transform column "$.'pr_nlx_158620_1'.'dataset_identifier'" to "dataset.ID";
 transform column "$.'pr_nlx_158620_1'.'title'" to "dataset.title";
+transform column "$.'pr_nlx_158620_1'.'primary_submitter'" to "dataset.creators"
 transform column "$.'pr_nlx_158620_1'.'keywords'" to "dataset.keywords[]" apply {{
 arr=re.split("\s*;\s*",value,)
 result=arr
 }};
 
 /* Dataset Distribution */
-transform column "$.'pr_nlx_158620_1'.'announcement_date'" to "datasetdistribution.dateReleased" apply toStandardDateTime("yyyy-MM-dd");
+transform column "$.'pr_nlx_158620_1'.'announcement_date'" to "datasetDistribution.dateReleased" apply toStandardDateTime("yyyy-MM-dd");
 
 /* Data Repository Information */
 let "dataRepository.ID" = "SCR:004055";
