@@ -1,8 +1,12 @@
 /* Dataset Information */
 transform column "$.'identifier'" to "dataset.ID";
 transform column "$.'Title'" to "dataset.title";
+let "dataset.creators" = ""
 transform column "$.'Types'.'Study Type'" to "dataset.types";
 transform column "$.'Abstract'" to "dataset.description";
+
+/* Dataset Distribution */
+let "datasetDistribution.dateReleased" = "" ;
 
 /* Publication */
 transform column "$.'Results'[*]" to "publication[].title" apply {{
