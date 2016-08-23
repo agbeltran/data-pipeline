@@ -1,11 +1,12 @@
 /* Dataset Information */
 transform column "$.'subset_dataset_id'" to "dataset.ID";
 transform column "$.'dataset_title'" to "dataset.title";
+let "dataset.creators" = ""
 transform column "$.'dataset_type'" to "dataset.types";
 transform column "$.'dataset_description'" to "dataset.description";
 
 /* Dataset Distribution */
-transform column "$.'dataset_update_date'" to "datadistribution.dateReleased" apply toStandardDate("MMM dd yyyy");
+transform column "$.'dataset_update_date'" to "datasetDistribution.dateReleased" apply toStandardDate("MMM dd yyyy");
 
 /* Data Repository Information */
 let "dataRepository.ID" = "SCR:007303";
