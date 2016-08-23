@@ -1,13 +1,13 @@
 /* Dataset Information */
 transform column "$.'record'.'header'.'identifier'.'_$'" to "dataset.ID";
 transform column "$.'record'.'metadata'.'codeBook'.'docDscr'.'citation'.'titlStmt'.'titl'.'_$'" to "dataset.title";
-transform column "$.'record'.'metadata'.'codeBook'.'docDscr'.'citation'.'prodStmt'.'producer'.'_$'" to "dataset.creator";
+transform column "$.'record'.'metadata'.'codeBook'.'docDscr'.'citation'.'prodStmt'.'producer'.'_$'" to "dataset.creators";
 transform column "$.'record'.'metadata'.'codeBook'.'stdyDscr'.'stdyInfo'.'abstract'.'_$'" to "dataset.description";
 transform column "$.'record'.'metadata'.'codeBook'.'stdyDscr'.'stdyInfo'.'subject'.'keyword'[*].'_$'" to "dataset.keyword[]";
 transform column "$.'record'.'metadata'.'codeBook'.'stdyDscr'.'stdyInfo'.'sumDscr'.'dataKind'[*].'_$'" to "dataset.types[]";
 
 /* Dataset Distribution */
-transform column "$.'record'.'metadata'.'codeBook'.'docDscr'.'citation'.'verStmt'.'version'.'@date'" to "datasetDistribution.dateReleased";
+transform column "$.'record'.'metadata'.'codeBook'.'docDscr'.'citation'.'verStmt'.'version'.'@date'" to "datasetDistribution.dateReleased"apply toStandardDateTime("yyyy/MM/dd");
 
 /* Citations */
 transform column "$.'record'.'metadata'.'codeBook'.'stdyDscr'.'othrStdyMat'.'relPubl'[*].'citation'.'titlStmt'.'titl'.'_$'" to "dataset.isCitedBy[].title";
