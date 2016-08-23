@@ -1,12 +1,13 @@
 /* Dataset Information */
 transform column "$.'datasetid'" to "dataset.ID";
 transform column "$.'datasetname'" to "dataset.title";
+let "dataset.creators"=""
 transform column "$.'biologicalbucket'" to "dataset.types[0]";
 transform column "$.'endpointcategorization'" to "dataset.types[1]";
 
 /* Dataset Distribution */
 transform column "$.'datemodified'" to "datasetdistribution.dateModified" apply toStandardDateTime("yyyy-MM-dd'T'HH:mm:ssZ");
-transform column "$.'datereleased'" to "datasetdistribution.dateReleased" apply toStandardDateTime("yyyy-MM-dd'T'HH:mm:ssZ");
+transform column "$.'datereleased'" to "datasetDistribution.dateReleased" apply toStandardDateTime("yyyy-MM-dd'T'HH:mm:ssZ");
 transform column "$.'_version_'" to "dataset.version";
 
 /* Data Repository Information */
