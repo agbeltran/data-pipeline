@@ -1,6 +1,7 @@
 /* Dataset Information */
 transform column "$.'pr_nlx_151749_1'.'collection_name'" to "dataset.ID";
 transform column "$.'pr_nlx_151749_1'.'collection_name'" to "dataset.title";
+transform column "$.'pr_nlx_151749_1'.'attribution'" to "dataset.creators"; /* Please only extract the person's name*/
 transform column "$.'pr_nlx_151749_1'.'site_names'" to "dataset.creators[]" apply {{
 arr=re.split("\s*,\s*",value,)
 result=arr
