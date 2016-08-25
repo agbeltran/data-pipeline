@@ -5,6 +5,10 @@ transform column "$.'clinical_study'.'source'.'_$'" to "dataset.creators";
 transform column "$.'clinical_study'.'brief_summary'.'textblock'.'_$'" to "dataset.description";
 transform column "$.'clinical_study'.'keyword'[*].'_$'" to "dataset.keywords[]";
 
+/* Dataset Distribution */
+transform column "$.'clinical_study'.'firstreceived_date'.'_$'" to "datasetDistribution.dateReleased" apply toStandardDateTime("yyyy/MM/dd");
+
+
 /* Data repository Information */
 let "dataRepository.ID" = "SCR:002309";
 let "dataRepository.name" = "ClinicalTrials.gov";
