@@ -8,7 +8,7 @@ arr=re.split("\s*,\s*",value,)
 result=arr
 }};
 /* Dataset Distribution */
-let "datasetDistribution.dateReleased" = ""
+transform column "$.nif_0000_03208_2.'releaseDate'" to "datasetDistribution.dateReleased" apply toStandardDateTime("yyyy/MM/dd");
 
 /* Data Repository Information */
 let "dataRepository.name"  = "Nuclear Receptor Signaling Atlas";
