@@ -5,6 +5,7 @@ transform column "$.'pr_nlx_152660_1'.'pi'" to "dataset.creators"
 transform column "$.'pr_nlx_152660_1'.'description'" to "dataset.description";
 
 /* Dataset Distribution */
+transform column "$.'pr_nlx_152660_1'.'date'" to "datasetDistribution.dateReleased" apply toStandardDateTime("yyyy/MM/dd");
 transform column "$.'pr_nlx_152660_1'.'samples'" to "datasetdistribution.size";
 
 /* Data Repository Information */
