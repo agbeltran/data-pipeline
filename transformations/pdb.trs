@@ -78,7 +78,7 @@ let "datasetDistribution[5].license" = "Data files contained in the PDB archive 
 
 /* Dataset Distribution - JSmol Image */
 let "datasetDistribution[6].format" = "JSmol";
-transform column "$..'PDBx:entryCategory'.'PDBx:entry'.'@id'" to "datasetDistribution[5].accessURL" apply {{ result='http://www.rcsb.org/pdb/explore/jmol.do?structureId=' + value + '&bionumber=1' }};
+transform column "$..'PDBx:entryCategory'.'PDBx:entry'.'@id'" to "datasetDistribution[6].accessURL" apply {{ result='http://www.rcsb.org/pdb/explore/jmol.do?structureId=' + value + '&bionumber=1' }};
 let "datasetDistribution[6].accessType" = "view";
 let "datasetDistribution[6].storedIn" = "Protein Data Bank";
 let "datasetDistribution[6].license" = "Data files contained in the PDB archive (ftp://ftp.wwpdb.org) are free of all copyright restrictions and made fully and freely available for both non-commercial and commercial use. Users of the data should attribute the original authors of that structural data. By using the materials available in the PDB archive, the user agrees to abide by the conditions described in the PDB Advisory Notice.";
