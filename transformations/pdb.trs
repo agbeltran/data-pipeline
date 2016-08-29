@@ -9,11 +9,11 @@ result=arr
 }};
 
 /* Dataset Distribution */
-transform column "$..'PDBx:database_PDB_revCategory'.'PDBx:database_PDB_rev'[?(@.'@num' = '1')].'PDBx:date'.'_$'" to "datasetDistribution.dateReleased" apply toStandardDateTime("yyyy/MM/dd");
-transform column "$..'PDBx:database_PDB_revCategory'.'PDBx:database_PDB_rev'[?(@.'@num' = '1')].'PDBx:date_original'.'_$'" to "datasetdistribution.dateCreated";
+transform column "$..'PDBx:database_PDB_revCategory'.'PDBx:database_PDB_rev'[?(@.'@num' = '1')].'PDBx:date'.'_$'" to "datasetDistribution.dateReleased" apply toStandardDateTime("yyyy-MM-dd");
+transform column "$..'PDBx:database_PDB_revCategory'.'PDBx:database_PDB_rev'[?(@.'@num' = '1')].'PDBx:date_original'.'_$'" to "datasetDistribution.dateCreated";
 
 /* Data Repository Information */
-let "dataRepository.ID" apply = "SCR:012820";
+let "dataRepository.ID" = "SCR:012820";
 let "dataRepository.name" = "Protein Data Bank";
 let "dataRepository.abbreviation" = "PDB";
 let "dataRepository.homePage"= "http://www.rcsb.org/pdb/";
@@ -32,7 +32,8 @@ result = value1.lower() + ':' + value2
 }};
 
 /* Access Information */
-transform column "$.'PDBx:datablock'.'@datablockName'.'PDBx:atom_sites'.'@entry_id'" to "access.landingPage" apply {{ result='http://www.rcsb.org/pdb/explore/explore.do?structureId=' + value}}
+transform column "$.'PDBx:datablock'.'@datablockName'.'PDBx:atom_sites'.'@entry_id'" to "access.landingPage" apply {{ result='http://www.rcsb.org/pdb/explore/explore.do?structureId=' + value}};
+
 let "access.accesstypes" = "download";
 let "access.authorization" = "none";
 let "access.authentication[0]" = "none"; 
