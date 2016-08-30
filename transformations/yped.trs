@@ -23,6 +23,13 @@ let "datasetDistribution[0].accessType" = "download";
 let "datasetDistribution[0].storedIn" = "YPED";
 transform column "$.'pr_nlx_152660_1'.'samples'" to "datasetdistribution.size";
 
+/* Dataset Distribution - YPED CSV */
+let "datasetDistribution[1].format" = "CSV";
+transform column "$.'pr_nlx_152660_1'.'series_id'" to "datasetDistribution[1].accessURL" apply {{ result='http://yped.med.yale.edu/repository/DownLoadLCMSSeriesPeptides.do?series_id=' + value }};
+let "datasetDistribution[1].accessType" = "download";
+let "datasetDistribution[1].storedIn" = "YPED";
+transform column "$.'pr_nlx_152660_1'.'samples'" to "datasetdistribution.size";
+
 /*Dataset Acknowledges*/
 transform column "$.'pr_nlx_152660_1'.'acknowledges'" to "dataset.acknowledges" ;
 
