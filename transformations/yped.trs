@@ -1,12 +1,22 @@
-/* Dataset Information */
-transform column "$.'pr_nlx_152660_1'.'project_name'" to "dataset.id";
+/* Dataset Basic Information */
+transform column "$.'pr_nlx_152660_1'.'project_name'" to "dataset.ID";
 transform column "$.'pr_nlx_152660_1'.'project_name'" to "dataset.title";
-transform column "$.'pr_nlx_152660_1'.'pi'" to "dataset.creators"
 transform column "$.'pr_nlx_152660_1'.'description'" to "dataset.description";
 
+/*Dataset Landing Page*/
+transform column "$.'pr_nlx_152660_1'.'project_url'" to "access.landingPage" apply {{ result = 'http://yped.med.yale.edu/repository/' + value }};
+
+/* Dataset Creator */
+transform column "$.'pr_nlx_152660_1'.'pi'" to "dataset.creator"
+
+/* Dataset Availability */
+let "dataset.available" = "available";
+
 /* Dataset Distribution */
-transform column "$.'pr_nlx_152660_1'.'date'" to "datasetDistribution.dateReleased" apply toStandardDateTime("yyyy/MM/dd");
 transform column "$.'pr_nlx_152660_1'.'samples'" to "datasetdistribution.size";
+
+/* Dataset Release Date Information */
+transform column "$.'pr_nlx_152660_1'.'date'" to "datasetDistribution.dateReleased" apply toStandardDateTime("yyyy/MM/dd");
 
 /* Data Repository Information */
 let "dataRepository.ID" = "SCR:001436";
@@ -18,7 +28,6 @@ let "dataRepository.homePage" = "http://medicine.yale.edu/keck/nida/yped.aspx";
 transform column "$.'pr_nlx_152660_1'.'pubmedid'" to "publication.ID" apply {{ result = 'pmid:' + value }};
 
 /* Access Information */
-transform column "$.'pr_nlx_152660_1'.'project_url'" to "access.landingPage" apply {{ result = 'http://yped.med.yale.edu/repository/' + value }};
 let "access.accesstypes" = "download";
 let "access.authorization" = "none";
 let "access.authentication" = "none";
