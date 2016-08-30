@@ -1,14 +1,28 @@
-/* Dataset Information */
+/* Dataset Basic Information */
 transform column "$.'record'.'header'.'identifier'.'_$'" to "dataset.ID";
 transform column "$.'record'.'metadata'.'oai_dc:dc'.'dc:title'.'_$'" to "dataset.title";
 transform column "$.'record'.'metadata'.'oai_dc:dc'.'dc:type'.'_$'" to "dataset.type";
-transform column "$.'record'.'metadata'.'oai_dc:dc'.'dc:creator'.'_$'" to "dataset.creators";
 transform column "$.'record'.'metadata'.'oai_dc:dc'.'dc:description'.'_$'" to "dataset.description";
 transform column "$.'record'.'metadata'.'oai_dc:dc'.'dc:subject'[*].'_$'" to "dataset.keywords[]";
 
-/* Dataset Distribution */
-transform column "$.'record'.'header'.'datestamp'.'_$'" to "datasetDistribution.dateReleased" apply toStandardDate("yyyy-MM-dd'T'HH:mm:ssZ");
-transform column "$.'record'.'metadata'.'oai_dc:dc'.'dc:date'[1].'_$'" to "datasetDistribution.dateCreated" apply toStandardDateTime("yyyy-MM-dd'T'HH:mm:ssZ");
+/* Dataset Landing Page*/
+transform column "$.'record'.'header'.'fetchURL'.'_$'" to "access.landingPage";
+
+/* Dataset Creator */
+transform column "$.'record'.'metadata'.'oai_dc:dc'.'dc:creator'.'_$'" to "dataset.creator";
+
+/* Dataset Availability */
+let "dataset.available" = "available";
+
+/* Dataset Release Date Information */
+transform column "$.'record'.'header'.'datestamp'.'_$'" to "dataset.dateReleased" apply toStandardDate("yyyy-MM-dd'T'HH:mm:ssZ");
+transform column "$.'record'.'metadata'.'oai_dc:dc'.'dc:date'[1].'_$'" to "dataset.dateCreated" apply toStandardDateTime("yyyy-MM-dd'T'HH:mm:ssZ");
+
+/* Dataset Qualifiers */
+let "dataset.type[0]" = "other";
+let "dataset.aggregation" = "instance of dataset";
+let "dataset.privacy" = "not applicable";
+let "dataset.refinement" = "curated";
 
 /* Datastandards Information */
 let "datastandard.name" = "Dublin Core";
@@ -24,7 +38,6 @@ let "dataRepository.homepage" = "http://www.datadryad.org";
 transform columns "$.'record'.'metadata'.'oai_dc:dc'.'dc:identifier'[*].'_$'" to "identifiers.ID[]";
 
 /* Access Information */
-transform column "$.'record'.'header'.'fetchURL'.'_$'" to "access.landingPage";
 let "access.accesstypes" = "download";
 let "access.authorization" = "none";
 let "access.authentication[0]" = "none"; 
