@@ -18,11 +18,14 @@ transform column "$.'pr_nlx_152660_1'.'samples'" to "datasetdistribution.size";
 /* Dataset Release Date Information */
 transform column "$.'pr_nlx_152660_1'.'date'" to "datasetDistribution.dateReleased" apply toStandardDateTime("yyyy/MM/dd");
 
-/* Data Repository Information */
-let "dataRepository.ID" = "SCR:001436";
-let "dataRepository.name" = "Yale Protein Expression Database";
-let "dataRepository.abbreviation" = "YPED";
-let "dataRepository.homePage" = "http://medicine.yale.edu/keck/nida/yped.aspx";
+/* Dataset Qualifiers */
+let "dataset.type[0]" = "structure";
+let "dataset.aggregation" = "instance of dataset";
+let "dataset.privacy" = "not applicable";
+let "dataset.refinement" = "curated";
+
+/* Method Information */
+transform column "$.'pr_nlx_152660_1'.'analysis_type'" to "dataAcquisition.name";
 
 /* Publication Information */
 transform column "$.'pr_nlx_152660_1'.'pubmedid'" to "publication.ID" apply {{ result = 'pmid:' + value }};
@@ -31,6 +34,13 @@ transform column "$.'pr_nlx_152660_1'.'pubmedid'" to "publication.ID" apply {{ r
 let "access.accesstypes" = "download";
 let "access.authorization" = "none";
 let "access.authentication" = "none";
+
+/* Specific Information on Extended Attributes */
+/* Data Repository Information */
+let "dataRepository.ID" = "SCR:001436";
+let "dataRepository.name" = "Yale Protein Expression Database";
+let "dataRepository.abbreviation" = "YPED";
+let "dataRepository.homePage" = "http://medicine.yale.edu/keck/nida/yped.aspx";
 
 /* Person Information */
 transform column "$.'pr_nlx_152660_1'.'pi'" to "person.name";
@@ -44,8 +54,7 @@ let "organization.homePage" = "http://medicine.yale.edu/index.aspx";
 /* Taxonomic Information */
 transform column "$.'pr_nlx_152660_1'.'organisms'" to "taxonomicinformation.name";
 
-/* Data Acquisition */
-transform column "$.'pr_nlx_152660_1'.'analysis_type'" to "dataAcquisition.name";
+
 
 /* Items not included */
 /*
