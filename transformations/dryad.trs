@@ -24,6 +24,16 @@ let "dataset.aggregation" = "instance of dataset";
 let "dataset.privacy" = "not applicable";
 let "dataset.refinement" = "curated";
 
+/* Information on Dataset Distributions */
+
+/* Dataset Distribution - Dryad CVS */
+/* need import more information
+
+let "datasetDistribution[0].format" = "CVS";
+let "datasetDistribution[0].accessType" = "download";
+let "datasetDistribution[0].storedIn" = "Dryad Data Repository";
+transform column "$.'record'.'metadata'.'oai_dc:dc'.'dc:rights'.'_$'" to "datasetDistribution[0].license"*/
+
 /* Datastandards Information */
 let "datastandard.name" = "Dublin Core";
 let "datastandard.homepage" = "dublincore.org";
