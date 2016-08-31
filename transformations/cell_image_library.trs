@@ -1,9 +1,54 @@
-/* Dataset Information */
+/* Dataset Basic Information */
 transform column "$.'pr_nif_0000_37639_1'.'id'" to "dataset.ID";
 transform column "$.'pr_nif_0000_37639_1'.'id'" to "dataset.title" apply {{ result = 'Cell Image Library Dataset CIL:' + value }};
 transform column "$.'pr_nif_0000_37639_1'.'imagedescription'" to "dataset.description";
 transform column "$.'pr_nif_0000_37639_1'.'parameterimaged'" to "dataset.dimensions";
 transform column "$.'pr_nif_0000_37639_1'.'itemtype'" to "dataset.types";
+
+/* Dataset Landing Page */
+transform column "$.'pr_nif_0000_37639_1'.'id'" to "access.landingPage" apply {{ result = 'http://www.cellimagelibrary.org/images/' + value }};
+
+/* Dataset Creator */
+/* please extract the names after "NANE:" from this field 
+
+transform column "$.'pr_nif_0000_37639_1'.'attribution'" to "dataet.creator"; */
+
+/* Dataset Availability */
+let "dataset.available" = "available";
+
+/* Dataset Release Date Information--still working on this */
+
+/* Dataset Qualifiers */
+let "dataset.type[0]" = "image";
+let "dataset.aggregation" = "instance of dataset";
+let "dataset.privacy" = "not applicable";
+let "dataset.refinement" = "curated";
+
+/* Information on Dataset Distributions */
+
+/* Dataset Distribution - JPGE */
+let "datasetDistribution[0].format" = "JPGE";
+transform column "$.'pr_nif_0000_37639_1'.'id'" to "datasetDistribution[0].accessURL" apply {{ result='www.cellimagelibrary.org/images/download_jpeg/' + value + '.jpg' }};
+let "datasetDistribution[0].accessType" = "download";
+let "datasetDistribution[0].storedIn" = "Cell Image Library";
+let "datasetDistribution[0].qualifier" = "not compressed";
+let "datasetDistribution[0].license" = "Attribution Non-Commercial; No Derivatives:This image is licensed under a Creative Commons Attribution, Non-Commercial, No Derivatives License.";
+
+/* Dataset Distribution - OME-TIF */
+let "datasetDistribution[1].format" = "OME-TIF";
+transform column "$.'pr_nif_0000_37639_1'.'id'"  to "datasetDistribution[1].accessURL" apply {{ result='http://grackle.crbs.ucsd.edu:8080/OmeroWebService/images/' + value + '.tif' }};
+let "datasetDistribution[1].accessType" = "download";
+let "datasetDistribution[1].storedIn" = "Cell Image Library";
+let "datasetDistribution[1].qualifier" = "not compressed";
+let "datasetDistribution[1].license" = "Attribution Non-Commercial; No Derivatives:This image is licensed under a Creative Commons Attribution, Non-Commercial, No Derivatives License.";
+
+/* Dataset Distribution - CSV */
+let "datasetDistribution[2].format" = "CSV";
+transform column "$.'pr_nif_0000_37639_1'.'id'"  to "datasetDistribution[2].accessURL" apply {{ result='http://grackle.crbs.ucsd.edu:8080/OmeroWebService/images/' + value + '.raw' }};
+let "datasetDistribution[2].accessType" = "download";
+let "datasetDistribution[2].storedIn" = "Cell Image Library";
+let "datasetDistribution[2].qualifier" = "not compressed";
+let "datasetDistribution[2].license" = "Attribution Non-Commercial; No Derivatives:This image is licensed under a Creative Commons Attribution, Non-Commercial, No Derivatives License.";
 
 /* Data Repository Information */
 let "dataRepository.ID" = "SCR:003510";
@@ -12,7 +57,6 @@ let "dataRepository.abbreviation" = "CIL";
 let "dataRepository.homePage" = "http://www.cellimagelibrary.org/";
 
 /* Access Information */
-transform column "$.'pr_nif_0000_37639_1'.'id'" to "access.landingPage" apply {{ result = 'http://www.cellimagelibrary.org/images/' + value }};
 let "access.accesstypes"  = "download";
 let "access.authorization"  = "none";
 let "access.authentication[0]" = "none";
@@ -24,8 +68,9 @@ let "organization.name" = "American Society for Cell Biology";
 let "organization.abbreviation" = "ASCB";
 let "organization.homePage" = "http://ascb.org/";
 
+/* Specific Information on Extended Attributes */
 /* Taxonomic Information */
-transform column "$.'pr_nif_0000_37639_1'.'ncbiorganismalclassification'" to "taxonomicinformation[].name" apply {{
+transform column "$.'pr_nif_0000_37639_1'.'ncbiorganismalclassification'" to "taxonomicInformation[].name" apply {{
 arr=re.split("\s*,\s*",value,)
 result=arr
 }};
@@ -38,7 +83,7 @@ transform column "$.'pr_nif_0000_37639_1'.'visualizationmethods'" to "activity.k
 transform column "$.'pr_nif_0000_37639_1'.'imagingmode'" to "dataAcquisition.name";
 
 /* Biological Entity */
-transform column "$.'pr_nif_0000_37639_1'.'celltype'" to "BiologicalEntity[].name" apply {{
+transform column "$.'pr_nif_0000_37639_1'.'celltype'" to "biologicalEntity[].name" apply {{
 arr=re.split("\s*,\s*",value,)
 result=arr
 }};
@@ -48,7 +93,7 @@ transform column "$.'pr_nif_0000_37639_1'.'cellline'" to "cellline[].name" apply
 arr=re.split("\s*,\s*",value,)
 result=arr
 }};
-transform column "$.'pr_nif_0000_37639_1'.'cellularcomponent'" to "cellularcomponent[].name" apply {{
+transform column "$.'pr_nif_0000_37639_1'.'cellularcomponent'" to "cellularComponent[].name" apply {{
 arr=re.split("\s*,\s*",value,)
 result=arr
 }};
