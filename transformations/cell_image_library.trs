@@ -32,7 +32,7 @@ transform column "$.'pr_nif_0000_37639_1'.'id'" to "datasetDistribution[0].acces
 let "datasetDistribution[0].accessType" = "download";
 let "datasetDistribution[0].storedIn" = "Cell Image Library";
 let "datasetDistribution[0].qualifier" = "not compressed";
-let "datasetDistribution[0].license" = "Attribution Non-Commercial; No Derivatives:This image is licensed under a Creative Commons Attribution, Non-Commercial, No Derivatives License.";
+transform column "$.'pr_nif_0000_37639_1'.'termsandconditions'" to  "datasetDistribution[0].license" ;
 
 /* Dataset Distribution - OME-TIF */
 let "datasetDistribution[1].format" = "OME-TIF";
@@ -40,7 +40,7 @@ transform column "$.'pr_nif_0000_37639_1'.'id'"  to "datasetDistribution[1].acce
 let "datasetDistribution[1].accessType" = "download";
 let "datasetDistribution[1].storedIn" = "Cell Image Library";
 let "datasetDistribution[1].qualifier" = "not compressed";
-let "datasetDistribution[1].license" = "Attribution Non-Commercial; No Derivatives:This image is licensed under a Creative Commons Attribution, Non-Commercial, No Derivatives License.";
+transform column "$.'pr_nif_0000_37639_1'.'termsandconditions'" to "datasetDistribution[1].license";
 
 /* Dataset Distribution - CSV */
 let "datasetDistribution[2].format" = "CSV";
@@ -48,7 +48,7 @@ transform column "$.'pr_nif_0000_37639_1'.'id'"  to "datasetDistribution[2].acce
 let "datasetDistribution[2].accessType" = "download";
 let "datasetDistribution[2].storedIn" = "Cell Image Library";
 let "datasetDistribution[2].qualifier" = "not compressed";
-let "datasetDistribution[2].license" = "Attribution Non-Commercial; No Derivatives:This image is licensed under a Creative Commons Attribution, Non-Commercial, No Derivatives License.";
+transform column "$.'pr_nif_0000_37639_1'.'termsandconditions'" to "datasetDistribution[2].license";
 
 /* Data Repository Information */
 let "dataRepository.ID" = "SCR:003510";
