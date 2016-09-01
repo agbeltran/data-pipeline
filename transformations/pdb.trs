@@ -12,17 +12,15 @@ result=arr
 transform column "$.'PDBx:datablock'.'@datablockName'.'PDBx:atom_sites'.'@entry_id'" to "access.landingPage" apply {{ result='http://www.rcsb.org/pdb/explore/explore.do?structureId=' + value}};
 
 /* Dataset Creator */
-transform column "$.'PDBx:datablock'.'PDBx:citation_authorCategory'.'PDBx:citation_author'[?(@.'@citation_id'='primary')].'@name'" to "dataset.creator[]";
-
-/* Dataset Availability */
-let "dataset.available" = "available";
+transform column "$.'PDBx:datablock'.'PDBx:citation_authorCategory'.'PDBx:citation_author'[?(@.'@citation_id'='primary')].'@name'" to "dataset.creators[]";
 
 /* Dataset Release Date Information */
 transform column "$..'PDBx:database_PDB_revCategory'.'PDBx:database_PDB_rev'[?(@.'@num' = '1')].'PDBx:date'.'_$'" to "dataset.dateReleased" apply toStandardDateTime("yyyy-MM-dd");
 transform column "$..'PDBx:database_PDB_revCategory'.'PDBx:database_PDB_rev'[?(@.'@num' = '1')].'PDBx:date_original'.'_$'" to "dataset.dateCreated";
 
 /* Dataset Qualifiers */
-let "dataset.type[0]" = "structure";
+let "dataset.availability" = "available";
+let "dataset.types[0]" = "structure";
 let "dataset.aggregation" = "instance of dataset";
 let "dataset.privacy" = "not applicable";
 let "dataset.refinement" = "curated";
@@ -88,11 +86,11 @@ let "datasetDistribution[6].license" = "Data files contained in the PDB archive 
 transform column "$..'PDBx:exptlCategory'.'PDBx:exptl'.'@method'" to "dataAcquisition.title";
 
 /* Publication Information */
-transform column "$..'PDBx:citation'[?(@.'@id' = 'primary')].'PDBx:pdbx_database_id_PubMed'.'_$'" to "publication.ID" apply {{ result = 'pmid:' + value }};
-transform column "$..'PDBx:citation'[?(@.'@id' = 'primary')].'PDBx:pdbx_database_id_DOI'.'_$'" to "publication.alternateID" apply {{ result = 'doi:' + value }};
-transform column "$..'PDBx:citation'[?(@.'@id' = 'primary')].'PDBx:title'.'_$'" to "publication.title";
-transform column "$..'PDBx:citation'[?(@.'@id' = 'primary')].'PDBx:year'.'_$'" to "publication.dates";
-transform column "$.'PDBx:datablock'.'PDBx:citation_authorCategory'.'PDBx:citation_author'[?(@.'@citation_id'='primary')].'@name'" to "publication.authorlist[]";
+transform column "$..'PDBx:citation'[?(@.'@id' = 'primary')].'PDBx:pdbx_database_id_PubMed'.'_$'" to "primaryPublications[0].ID" apply {{ result = 'pmid:' + value }};
+transform column "$..'PDBx:citation'[?(@.'@id' = 'primary')].'PDBx:pdbx_database_id_DOI'.'_$'" to "primaryPublications[0].alternateID" apply {{ result = 'doi:' + value }};
+transform column "$..'PDBx:citation'[?(@.'@id' = 'primary')].'PDBx:title'.'_$'" to "primaryPublications[0].title";
+transform column "$..'PDBx:citation'[?(@.'@id' = 'primary')].'PDBx:year'.'_$'" to "primaryPublications[0].dates";
+transform column "$.'PDBx:datablock'.'PDBx:citation_authorCategory'.'PDBx:citation_author'[?(@.'@citation_id'='primary')].'@name'" to "primaryPublications[0].authors[]";
 
 /* Identifier Information */
 transform columns "$.'PDBx:datablock'.'PDBx:database_2Category'.'PDBx:database_2'[*].'@database_id'",
