@@ -28,58 +28,58 @@ let "dataset.refinement" = "curated";
 /* Information on Dataset Distributions */
 
 /* Dataset Distribution - PDB XML */
-let "datasetDistribution[0].format" = "PDBML/XML";
-transform column "$..'PDBx:entryCategory'.'PDBx:entry'.'@id'" to "datasetDistribution[0].accessURL" apply {{ result='https://files.rcsb.org/download/' + value + '.xml.gz' }};
-let "datasetDistribution[0].accessType" = "download";
-let "datasetDistribution[0].storedIn" = "Protein Data Bank";
-let "datasetDistribution[0].qualifier" = "gzip compressed";
-let "datasetDistribution[0].license" = "Data files contained in the PDB archive (ftp://ftp.wwpdb.org) are free of all copyright restrictions and made fully and freely available for both non-commercial and commercial use. Users of the data should attribute the original authors of that structural data. By using the materials available in the PDB archive, the user agrees to abide by the conditions described in the PDB Advisory Notice.";
+let "datasetDistributions[0].format" = "PDBML/XML";
+transform column "$..'PDBx:entryCategory'.'PDBx:entry'.'@id'" to "datasetDistributions[0].accessURL" apply {{ result='https://files.rcsb.org/download/' + value + '.xml.gz' }};
+let "datasetDistributions[0].accessType" = "download";
+let "datasetDistributions[0].storedIn" = "Protein Data Bank";
+let "datasetDistributions[0].qualifier" = "gzip compressed";
+let "datasetDistributions[0].license" = "Data files contained in the PDB archive (ftp://ftp.wwpdb.org) are free of all copyright restrictions and made fully and freely available for both non-commercial and commercial use. Users of the data should attribute the original authors of that structural data. By using the materials available in the PDB archive, the user agrees to abide by the conditions described in the PDB Advisory Notice.";
 
 /* Dataset Distribution - PDB Format */
-let "datasetDistribution[1].format" = "PDB Format";
-transform column "$..'PDBx:entryCategory'.'PDBx:entry'.'@id'" to "datasetDistribution[1].accessURL" apply {{ result='https://files.rcsb.org/download/' + value + '.pdb.gz' }};
-let "datasetDistribution[1].accessType" = "download";
-let "datasetDistribution[1].storedIn" = "Protein Data Bank";
-let "datasetDistribution[1].qualifier" = "gzip compressed";
-let "datasetDistribution[1].license" = "Data files contained in the PDB archive (ftp://ftp.wwpdb.org) are free of all copyright restrictions and made fully and freely available for both non-commercial and commercial use. Users of the data should attribute the original authors of that structural data. By using the materials available in the PDB archive, the user agrees to abide by the conditions described in the PDB Advisory Notice.";
+let "datasetDistributions[1].format" = "PDB Format";
+transform column "$..'PDBx:entryCategory'.'PDBx:entry'.'@id'" to "datasetDistributions[1].accessURL" apply {{ result='https://files.rcsb.org/download/' + value + '.pdb.gz' }};
+let "datasetDistributions[1].accessType" = "download";
+let "datasetDistributions[1].storedIn" = "Protein Data Bank";
+let "datasetDistributions[1].qualifier" = "gzip compressed";
+let "datasetDistributions[1].license" = "Data files contained in the PDB archive (ftp://ftp.wwpdb.org) are free of all copyright restrictions and made fully and freely available for both non-commercial and commercial use. Users of the data should attribute the original authors of that structural data. By using the materials available in the PDB archive, the user agrees to abide by the conditions described in the PDB Advisory Notice.";
 
 /* Dataset Distribution - PDB mmCIF */
-let "datasetDistribution[2].format" = "PDBx/mmCIF";
-transform column "$..'PDBx:entryCategory'.'PDBx:entry'.'@id'" to "datasetDistribution[2].accessURL" apply {{ result='https://files.rcsb.org/download/' + value + '.cif.gz' }};
-let "datasetDistribution[2].accessType" = "download";
-let "datasetDistribution[2].storedIn" = "Protein Data Bank";
-let "datasetDistribution[2].qualifier" = "gzip compressed";
-let "datasetDistribution[2].license" = "Data files contained in the PDB archive (ftp://ftp.wwpdb.org) are free of all copyright restrictions and made fully and freely available for both non-commercial and commercial use. Users of the data should attribute the original authors of that structural data. By using the materials available in the PDB archive, the user agrees to abide by the conditions described in the PDB Advisory Notice.";
+let "datasetDistributions[2].format" = "PDBx/mmCIF";
+transform column "$..'PDBx:entryCategory'.'PDBx:entry'.'@id'" to "datasetDistributions[2].accessURL" apply {{ result='https://files.rcsb.org/download/' + value + '.cif.gz' }};
+let "datasetDistributions[2].accessType" = "download";
+let "datasetDistributions[2].storedIn" = "Protein Data Bank";
+let "datasetDistributions[2].qualifier" = "gzip compressed";
+let "datasetDistributions[2].license" = "Data files contained in the PDB archive (ftp://ftp.wwpdb.org) are free of all copyright restrictions and made fully and freely available for both non-commercial and commercial use. Users of the data should attribute the original authors of that structural data. By using the materials available in the PDB archive, the user agrees to abide by the conditions described in the PDB Advisory Notice.";
 
 /* Dataset Distribution - FASTA Sequence */
-let "datasetDistribution[3].format" = "FASTA";
-transform column "$..'PDBx:entryCategory'.'PDBx:entry'.'@id'" to "datasetDistribution[3].accessURL" apply {{ result='http://www.rcsb.org/pdb/download/downloadFile.do?fileFormat=FASTA&compression=NO&structureId=' + value }};
-let "datasetDistribution[3].accessType" = "download";
-let "datasetDistribution[3].storedIn" = "Protein Data Bank";
-let "datasetDistribution[3].license" = "Data files contained in the PDB archive (ftp://ftp.wwpdb.org) are free of all copyright restrictions and made fully and freely available for both non-commercial and commercial use. Users of the data should attribute the original authors of that structural data. By using the materials available in the PDB archive, the user agrees to abide by the conditions described in the PDB Advisory Notice.";
+let "datasetDistributions[3].format" = "FASTA";
+transform column "$..'PDBx:entryCategory'.'PDBx:entry'.'@id'" to "datasetDistributions[3].accessURL" apply {{ result='http://www.rcsb.org/pdb/download/downloadFile.do?fileFormat=FASTA&compression=NO&structureId=' + value }};
+let "datasetDistributions[3].accessType" = "download";
+let "datasetDistributions[3].storedIn" = "Protein Data Bank";
+let "datasetDistributions[3].license" = "Data files contained in the PDB archive (ftp://ftp.wwpdb.org) are free of all copyright restrictions and made fully and freely available for both non-commercial and commercial use. Users of the data should attribute the original authors of that structural data. By using the materials available in the PDB archive, the user agrees to abide by the conditions described in the PDB Advisory Notice.";
 
 /* Dataset Distribution - Structure Factors */
-let "datasetDistribution[4].format" = "CIF";
-transform column "$..'PDBx:entryCategory'.'PDBx:entry'.'@id'" to "datasetDistribution[4].accessURL" apply {{ result='https://files.rcsb.org/download/' + value + '-sf.cif.gz' }};
-let "datasetDistribution[4].accessType" = "download";
-let "datasetDistribution[4].storedIn" = "Protein Data Bank";
-let "datasetDistribution[4].qualifier" = "gzip compressed";
-let "datasetDistribution[4].license" = "Data files contained in the PDB archive (ftp://ftp.wwpdb.org) are free of all copyright restrictions and made fully and freely available for both non-commercial and commercial use. Users of the data should attribute the original authors of that structural data. By using the materials available in the PDB archive, the user agrees to abide by the conditions described in the PDB Advisory Notice.";
+let "datasetDistributions[4].format" = "CIF";
+transform column "$..'PDBx:entryCategory'.'PDBx:entry'.'@id'" to "datasetDistributions[4].accessURL" apply {{ result='https://files.rcsb.org/download/' + value + '-sf.cif.gz' }};
+let "datasetDistributions[4].accessType" = "download";
+let "datasetDistributions[4].storedIn" = "Protein Data Bank";
+let "datasetDistributions[4].qualifier" = "gzip compressed";
+let "datasetDistributions[4].license" = "Data files contained in the PDB archive (ftp://ftp.wwpdb.org) are free of all copyright restrictions and made fully and freely available for both non-commercial and commercial use. Users of the data should attribute the original authors of that structural data. By using the materials available in the PDB archive, the user agrees to abide by the conditions described in the PDB Advisory Notice.";
 
 /* Dataset Distribution - Biological Assembly */
-let "datasetDistribution[5].format" = "PDB Format (A)";
-transform column "$..'PDBx:entryCategory'.'PDBx:entry'.'@id'" to "datasetDistribution[5].accessURL" apply {{ result='https://files.rcsb.org/download/' + value + '.pdb1.gz' }};
-let "datasetDistribution[5].accessType" = "download";
-let "datasetDistribution[5].storedIn" = "Protein Data Bank";
-let "datasetDistribution[5].qualifier" = "gzip compressed";
-let "datasetDistribution[5].license" = "Data files contained in the PDB archive (ftp://ftp.wwpdb.org) are free of all copyright restrictions and made fully and freely available for both non-commercial and commercial use. Users of the data should attribute the original authors of that structural data. By using the materials available in the PDB archive, the user agrees to abide by the conditions described in the PDB Advisory Notice.";
+let "datasetDistributions[5].format" = "PDB Format (A)";
+transform column "$..'PDBx:entryCategory'.'PDBx:entry'.'@id'" to "datasetDistributions[5].accessURL" apply {{ result='https://files.rcsb.org/download/' + value + '.pdb1.gz' }};
+let "datasetDistributions[5].accessType" = "download";
+let "datasetDistributions[5].storedIn" = "Protein Data Bank";
+let "datasetDistributions[5].qualifier" = "gzip compressed";
+let "datasetDistributions[5].license" = "Data files contained in the PDB archive (ftp://ftp.wwpdb.org) are free of all copyright restrictions and made fully and freely available for both non-commercial and commercial use. Users of the data should attribute the original authors of that structural data. By using the materials available in the PDB archive, the user agrees to abide by the conditions described in the PDB Advisory Notice.";
 
 /* Dataset Distribution - JSmol Image */
-let "datasetDistribution[6].format" = "JSmol";
-transform column "$..'PDBx:entryCategory'.'PDBx:entry'.'@id'" to "datasetDistribution[6].accessURL" apply {{ result='http://www.rcsb.org/pdb/explore/jmol.do?structureId=' + value + '&bionumber=1' }};
-let "datasetDistribution[6].accessType" = "view";
-let "datasetDistribution[6].storedIn" = "Protein Data Bank";
-let "datasetDistribution[6].license" = "Data files contained in the PDB archive (ftp://ftp.wwpdb.org) are free of all copyright restrictions and made fully and freely available for both non-commercial and commercial use. Users of the data should attribute the original authors of that structural data. By using the materials available in the PDB archive, the user agrees to abide by the conditions described in the PDB Advisory Notice.";
+let "datasetDistributions[6].format" = "JSmol";
+transform column "$..'PDBx:entryCategory'.'PDBx:entry'.'@id'" to "datasetDistributions[6].accessURL" apply {{ result='http://www.rcsb.org/pdb/explore/jmol.do?structureId=' + value + '&bionumber=1' }};
+let "datasetDistributions[6].accessType" = "view";
+let "datasetDistributions[6].storedIn" = "Protein Data Bank";
+let "datasetDistributions[6].license" = "Data files contained in the PDB archive (ftp://ftp.wwpdb.org) are free of all copyright restrictions and made fully and freely available for both non-commercial and commercial use. Users of the data should attribute the original authors of that structural data. By using the materials available in the PDB archive, the user agrees to abide by the conditions described in the PDB Advisory Notice.";
 
 
 /* Method Information */
