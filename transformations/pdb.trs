@@ -83,7 +83,7 @@ let "datasetDistributions[6].license" = "Data files contained in the PDB archive
 
 
 /* Method Information */
-transform column "$..'PDBx:exptlCategory'.'PDBx:exptl'.'@method'" to "dataAcquisition.title";
+transform column "$..'PDBx:exptlCategory'.'PDBx:exptl'.'@method'" to "dataAcquisition.name";
 
 /* Publication Information */
 transform column "$..'PDBx:citation'[?(@.'@id' = 'primary')].'PDBx:pdbx_database_id_PubMed'.'_$'" to "primaryPublications[0].ID" apply {{ result = 'pmid:' + value }};
